@@ -9,8 +9,18 @@ import { runAgent } from "./agent/agents.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FRONTEND_DIR = path.resolve(__dirname, "../../frontend/dist");
 
+const allowedOrigins = [
+  "https://website-automation-agent-nine.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:3000",
+];
+
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 app.use(express.json());
 app.use(express.static(FRONTEND_DIR));
 
