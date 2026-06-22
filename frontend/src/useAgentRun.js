@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
+// Base URL for the backend API. In local dev this is empty, so requests stay
+// relative ("/api/...") and the Vite dev-server proxy forwards them. In a
+// deployed build (e.g. the frontend on Vercel, backend on Render) set
+// VITE_API_BASE to the backend's absolute origin so requests reach it directly.
+const API_BASE = (import.meta.env.VITE_API_BASE || "").replace(/\/$/, "");
+
 let _id = 0;
 const nextId = () => ++_id;
 
@@ -23,7 +29,7 @@ export function useAgentRun() {
   // Load backend defaults once on mount.
   useEffect(() => {
     let alive = true;
-    fetch("/api/config")
+    fetch(`${API_BASE}/api/config`)
       .then((r) => r.json())
       .then((cfg) => alive && setConfig(cfg))
       .catch(() => alive && setConfigError(true));
@@ -114,7 +120,7 @@ export function useAgentRun() {
       runningRef.current = true;
 
       const qs = new URLSearchParams({ url: url.trim(), goal: goal.trim() });
-      const source = new EventSource(`/api/run?${qs.toString()}`);
+      const source = new EventSource(`${API_BASE}/api/run?${qs.toString()}`);
       sourceRef.current = source;
 
       source.onmessage = (e) => {
