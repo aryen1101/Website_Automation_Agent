@@ -144,13 +144,21 @@ cd backend
 npm run agent -- "<goal>" "<url>"
 ```
 
-Example:
+Examples:
 
 ```bash
-npm run agent -- "Fill the text input with 'Vimal Yadav' and the textarea with 'Testing the agent', then click Submit" "https://www.selenium.dev/selenium/web/web-form.html"
+# Fill a form and submit it
+npm run agent -- "Fill the text input with 'Browser Agent' and the textarea with 'Testing the automation agent', then click Submit" "https://www.selenium.dev/selenium/web/web-form.html"
+
+# Fill every field on a form with sensible sample values
+npm run agent -- "Find all the input fields and fill each one with appropriate sample data, then submit the form" "https://example.com/contact"
+
+# Perform a search
+npm run agent -- "Type 'browser automation' into the search box and submit" "https://example.com/search"
 ```
 
-If you omit the arguments, the defaults from `config.js` are used.
+The first argument is the **goal** (plain English) and the second is the
+**target URL**. If you omit both, the defaults from `config.js` are used.
 
 ---
 
