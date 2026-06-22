@@ -1,4 +1,4 @@
-const toolDefinitons = [
+const toolDefinitions = [
   {
     type: "function",
     function: {

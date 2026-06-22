@@ -6,7 +6,7 @@ const config = {
   headless: String(process.env.HEADLESS).toLowerCase() === "true",
   maxSteps: Number(process.env.MAX_STEPS) || 15,
   slowMo: Number(process.env.SLOW_MO) || 400,
-  model: "google/gemini-2.0-flash-001",
+  model: "google/gemini-2.5-flash",
 
   defaultUrl: "https://ui.shadcn.com/docs/forms/react-hook-form",
   defaultGoal:

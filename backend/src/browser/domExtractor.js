@@ -19,6 +19,18 @@ export async function extractElements(page) {
       );
     };
 
+    const labelFor = (el) => {
+      if (el.id) {
+        const lbl = document.querySelector(`label[for="${el.id}"]`);
+        if (lbl && lbl.innerText) return lbl.innerText.trim().slice(0, 60);
+      }
+      const wrapping = el.closest("label");
+      if (wrapping && wrapping.innerText) {
+        return wrapping.innerText.trim().slice(0, 60);
+      }
+      return "";
+    };
+
     let index = 0;
     for (const el of elements) {
       const rect = el.getBoundingClientRect();

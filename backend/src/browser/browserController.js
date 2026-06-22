@@ -14,7 +14,7 @@ export default class BrowserController {
     this.browser = null;
     this.context = null;
     this.page = null;
-    this.viewport = { with: 1280, height: 800 };
+    this.viewport = { width: 1280, height: 800 };
 
     if (!fs.existsSync(SCREENSHOT_DIR)) {
       fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
