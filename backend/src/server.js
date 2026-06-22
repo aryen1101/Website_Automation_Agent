@@ -10,9 +10,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FRONTEND_DIR = path.resolve(__dirname, "../../frontend/dist");
 
 const allowedOrigins = [
-  "https://website-automation-agent-nine.vercel.app",
+//   "https://website-automation-agent-nine.vercel.app",
   "http://localhost:5173",
-  "http://localhost:3000",
+
 ];
 
 const app = express();
